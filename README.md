@@ -1,2 +1,2 @@
-# PD
-Praca Inżynierska 
+Praca Inżynierska
+Wojciech Kowalczyk 162436
