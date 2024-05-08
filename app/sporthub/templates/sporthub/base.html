@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'sporthub/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+           <img style="height: 5%; width: 5%; margin-right: 10px" src="{% static 'sporthub/logo.png' %}">
+            <h3 style="color:white;">SportHub</h3>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'sporthub-home' %}">Strona główna</a>
+              <a class="nav-item nav-link" href="{% url 'sporthub-about' %}">Trening</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+
+                <a href="{% url 'sporthub-new' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Nowy post
+            </a>
+                <a href="{% url 'profile' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Profil
+            </a>
+                <a href="{% url 'logout' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Wyloguj się
+            </a>
+                {% else %}
+              <a href="{% url 'login' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Zaloguj się
+            </a>
+            <a href="{% url 'register' %}" id="auth-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Zarejestruj się
+            </a>
+
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <Br>
+    <main role="main" class="container">
+      <div class="row">
+          <div class="col-md-8">
+              {%  if messages%}
+                {% for message in messages %}
+                    <div class="alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+              {% endif %}
+          </div>
+      <br><br><br>
+        <div class="col-md-8">
+           {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-sectionw">
+             <h3 style="color:white;">Odkryj więcej</h3>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Ostatnie treningi</li>
+                <li class="list-group-item list-group-item-light">Znajomi</li>
+                <li class="list-group-item list-group-item-light">Trasy</li>
+                <li class="list-group-item list-group-item-light">Historia</li>
+              </ul>
+            </p>
+            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;" style="padding-top: 120px;">
+                <a id="list-group" style="text-decoration: none;" href="" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+                  <span class="fs-5 fw-semibold" id="gist-btn">Ostatnie wpisy</span>
+                </a>
+                <div class="list-group list-group-flush border-bottom scrollarea">
+                  <a href="#" class="list-group-item list-group-item-action  lh-tight" aria-current="true">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                      <strong class="mb-1">Trening w górach
+                    </strong>
+                      <small>43,5km</small>
+                    </div>
+                    <div class="col-10 mb-1 small">Weekendowy wypad w góry </div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                      <strong class="mb-1">Olsztyński Las Miejski</strong>
+                      <small class="text-muted">64km</small>
+                    </div>
+                    <div class="col-10 mb-1 small">Warmiński Singletracki</div>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                      <strong class="mb-1">Jelenia Góra</strong>
+                      <small class="text-muted">84km</small>
+                    </div>
+                    <div class="col-10 mb-1 small">Trasa Pucharu Polski XCO</div>
+                  </a>
+
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+
+
+        <footer class="" >
+          <ul class="nav justify-content-center border-bottom"  style="margin-top: 60px;">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="../admin/" class="nav-link px-2 text-muted">Admin</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+          </ul>
+          <p class="text-center text-muted">&copy; Wojciech Kowalczyk 2024</p>
+        </footer>
+
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html> 

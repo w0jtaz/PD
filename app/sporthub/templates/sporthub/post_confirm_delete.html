@@ -1,0 +1,21 @@
+{% extends 'sporthub/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="content-section">
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend claass="border-bottom mb-4">Usuń post</legend>
+            <h4>Czy na pewno chcesz usunąć post? <b>" {{ object.title }} "</b></h4>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Usuń</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Masz już konto? <a href="{% url 'sporthub-home' %}">Powrót</a></small>
+        </div>
+    </div>
+{% endblock content %}

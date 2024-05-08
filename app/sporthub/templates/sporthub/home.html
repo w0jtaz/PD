@@ -1,0 +1,27 @@
+{% extends 'sporthub/base.html' %}
+{% block content %}
+
+    {% for post in posts %}
+            <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" alt="">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted }}</small>
+              </div>
+              <h2><a class="article-title" href="{% url 'sporthub-detail' post.id %}">{{ post.title }}</a></h2>
+             
+              {% if post.image %}
+                  <img src="{{ post.image.url }}" alt="Post Image" style="max-width: 50%; height: auto;">
+              {% endif %}
+            </div>
+            <a href="{% url 'sporthub-detail' post.id %}" class="btn btn-primary">Wyświetl</a>
+            
+            <br>
+       
+          </article>
+        <br>
+        
+        
+    {% endfor  %}
+{% endblock content %}

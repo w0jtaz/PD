@@ -1,0 +1,32 @@
+{% extends 'sporthub/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="content-section">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+           <fieldset class="form-group">
+    <legend class="border-bottom mb-4">Aktualizuj profil</legend>
+    <div class="form-group">
+        <label for="id_username" class="control-label">Nazwa użytkownika:</label>
+        <input type="text" name="username" class="form-control" id="id_username" required>
+    </div>
+    <div class="form-group">
+        <label for="id_email" class="control-label">Adres email:</label>
+        <input type="email" name="email" class="form-control" id="id_email" required>
+    </div>
+
+    <label for="id_profile_pic" class="control-label">Zdjęcie profilowe:</label>
+    {{ p_form|crispy }}
+
+</fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Zapisz</button>
+<!--                <button class="btn btn-outline-info" type="submit"><a href="{% url 'profile' %}">Go Back</a></button>-->
+            </div>
+
+        </form>
+
+    </div>
+{% endblock content %}

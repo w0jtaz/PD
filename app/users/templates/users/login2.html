@@ -1,0 +1,21 @@
+{% extends 'sporthub/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    <div class="content-section">
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Zarejestruj się</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Zaloguj się</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">Dołącz do naszej społeczności! <a href="{% url 'register' %}"> Zarejestruj się</a></small>
+        </div>
+    </div>
+{% endblock content %}
