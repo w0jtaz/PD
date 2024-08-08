@@ -72,78 +72,40 @@
       </nav>
     </header>
     <Br>
-    <main role="main" class="container">
-      <div class="row">
-          <div class="col-md-8">
-              {%  if messages%}
+    <main role="main" class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-6">
+            {% if messages %}
                 {% for message in messages %}
                     <div class="alert-{{ message.tags }}">
                         {{ message }}
                     </div>
                 {% endfor %}
-              {% endif %}
-          </div>
-        <div class="col-md-8">
-           {% block content %}
-               <div class="content-section">
-        <form action="" method="post">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend claass="border-bottom mb-4">Dołącz już dzisiaj!</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Zarejestruj się</button>
+            {% endif %}
+            <div class="content-section">
+                {% block content %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Dołącz już dzisiaj!</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Zarejestruj się</button>
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text-muted">Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></small>
+                </div>
+                {% endblock %}
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></small>
         </div>
     </div>
-           {% endblock %}
-        </div>
+</main>
+
         <div class="col-md-4">
           <div class="content-sectionw">
-            <!-- <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p> -->
-            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;" style="padding-top: 120px;">
-                <a id="list-group" style="text-decoration: none;" href="" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
-                  <!-- <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg> -->
-                  <span class="fs-5 fw-semibold" id="gist-btn">Latest Gist</span>
-                </a>
-                <div class="list-group list-group-flush border-bottom scrollarea">
-                  <a href="#" class="list-group-item list-group-item-action  lh-tight" aria-current="true">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Seriously, Stop Trying to Teach Toddlers How to Code...By Desphixs
-                    </strong>
-                      <small>Wed</small>
-                    </div>
-                    <div class="col-10 mb-1 small">AS A BABY nerd, I was obsessed with Hackers. The 1995 cult movie... </div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Its not a bug - It's a feature... by Desphixs</strong>
-                      <small class="text-muted">Tues</small>
-                    </div>
-                    <div class="col-10 mb-1 small">When it comes to coding, everything works like a miracle, let me use that word...hahaha</div>
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">I wanted to be a great programmer but...by Desphixs</strong>
-                      <small class="text-muted">Mon</small>
-                    </div>
-                    <div class="col-10 mb-1 small">in my family trait, nobody knows anything about computers and i wanted to be the greatest computer scientist ever and...</div>
-                  </a>
 
-                </div>
-              </div>
           </div>
         </div>
       </div>
@@ -158,7 +120,7 @@
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
             <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
           </ul>
-          <p class="text-center text-muted">&copy; Desphixs 2021</p>
+
         </footer>
 
     </main>

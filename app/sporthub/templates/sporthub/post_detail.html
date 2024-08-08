@@ -16,20 +16,59 @@
         </div>
         <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
         <p class="article-content">{{ object.content }}</p>
+
         {% if object.distance %}
             <div>
                 <h5>Dystans trasy:</h5>
-                     <p>{{ object.distance | floatformat:"2" }} km</p>
+                <p>{{ object.distance | floatformat:"2" }} km</p>
             </div>
         {% endif %}
+
         {% if object.time_taken %}
             <div>
                 <h5>Czas pokonania trasy:</h5>
                 <p>{{ object.time_taken }}</p>
             </div>
         {% endif %}
+
+        {% if object.avg_heart_rate %}
+            <div>
+                <h5>Średnie tętno:</h5>
+                <p>{{ object.avg_heart_rate }} bpm</p>
+            </div>
+        {% endif %}
+
+        {% if object.calories %}
+            <div>
+                <h5>Spalone kalorie:</h5>
+                <p>{{ object.calories }} kcal</p>
+            </div>
+        {% endif %}
+
+        {% if object.avg_speed %}
+            <div>
+                <h5>Średnia prędkość:</h5>
+                <p>{{ object.avg_speed | floatformat:"2" }} km/h</p>
+            </div>
+        {% endif %}
+
+        {% if object.cadence %}
+            <div>
+                <h5>Kadencja:</h5>
+                <p>{{ object.cadence }} rpm</p>
+            </div>
+        {% endif %}
+
+        {% if object.max_heart_rate %}
+            <div>
+                <h5>Maksymalne tętno:</h5>
+                <p>{{ object.max_heart_rate }} bpm</p>
+            </div>
+        {% endif %}
+
     </div>
 </article>
+
 
 <div class="text-center">
     {% if object.image %}
@@ -46,13 +85,13 @@
 <div id="odstep"> </div>
 
 <style>
+
 body {
-     /* background: linear-gradient(to bottom right,#002f4b, #dc4225); */
-    /* color: #333333;  */
-    background-color: rgb(30, 29, 29);    /* background: linear-gradient(to bottom right,#002f4b,#dc4225); */
+    background-color: #f4f7f6;  /* Jasny, neutralny kolor tła */
+    color: #333333;
     background-size: contain;
     background-repeat: no-repeat;
-  }
+}
 
 .navbar-nav{
    
