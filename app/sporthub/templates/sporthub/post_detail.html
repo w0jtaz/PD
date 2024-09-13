@@ -1,7 +1,7 @@
 {% extends 'sporthub/base.html' %}
 
 {% block content %}
-   
+
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
@@ -30,6 +30,7 @@
                 <p>{{ object.time_taken }}</p>
             </div>
         {% endif %}
+    dsdds
 
         {% if object.avg_heart_rate %}
             <div>
@@ -66,9 +67,21 @@
             </div>
         {% endif %}
 
+        {% if object.avg_power %}
+            <div>
+                <h5>Średnia moc:</h5>
+                <p>{{ object.avg_power | floatformat:"2" }} W</p>
+            </div>
+        {% endif %}
+
+        {% if object.max_power %}
+            <div>
+                <h5>Maksymalna moc:</h5>
+                <p>{{ object.max_power | floatformat:"2" }} W</p>
+            </div>
+        {% endif %}
     </div>
 </article>
-
 
 <div class="text-center">
     {% if object.image %}
@@ -85,7 +98,6 @@
 <div id="odstep"> </div>
 
 <style>
-
 body {
     background-color: #f4f7f6;  /* Jasny, neutralny kolor tła */
     color: #333333;
@@ -93,22 +105,10 @@ body {
     background-repeat: no-repeat;
 }
 
-.navbar-nav{
-   
-   margin-left: 405px;
-}
-.navbar-nav.mr-auto{
-   
-   margin-left: -10px;
-}
-a.nav-item.nav-link {
-    margin-right: 15px;
-    padding: 22px;
-}
-#odstep{
+
+#odstep {
     margin-top: 320px;
 }
 </style>
 
 {% endblock content %}
-

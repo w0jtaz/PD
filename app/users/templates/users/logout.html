@@ -10,10 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'sporthub/main.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'sporthub/dla_slabowidzacych.css' %}">
 </head>
 <body>
     <header class="site-header">
+    <br>
+    <button id="toggle-accessibility" class="btn btn-dark">Tryb dla słabowidzących</button>
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
            <img style="height: 5%; width: 5%; margin-right: 10px" src="{% static 'sporthub/logo.png' %}">
@@ -24,15 +26,9 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
-{#              <a class="nav-item nav-link" href="{% url 'sporthub-home' %}">Strona główna</a>#}
-{#              <a class="nav-item nav-link" href="{% url 'sporthub-about' %}">Trening</a>#}
             </div>
-            <!-- Navbar Right Side -->
+
             <div class="navbar-nav">
-              <!-- <a class="nav-item nav-link" href="#">Login</a>
-              <a class="nav-item nav-link" href="#">Register</a> -->
-              <!-- <button class="noselect">Create Post</button> -->
-<!--                <h3 style="color: white;">Hello {{request.user}}</h3>-->
 
 
                 <a href="{% url 'logout' %}" id="auth-links">
@@ -64,7 +60,7 @@
         </div>
       </nav>
     </header>
-    <Br>
+
     <main role="main" class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="row w-100 justify-content-center">
         <div class="col-md-6">
@@ -122,5 +118,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+      document.getElementById('toggle-accessibility').addEventListener('click', function() {
+          document.body.classList.toggle('accessibility-mode');
+      });
+    </script>
 </body>
 </html>

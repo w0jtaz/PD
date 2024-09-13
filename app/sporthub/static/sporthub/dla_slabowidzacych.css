@@ -1,0 +1,94 @@
+/* Styl dla osób słabowidzących */
+.accessibility-mode body {
+    background-color: #000000;  /* Czarny kolor tła dla zwiększonego kontrastu */
+    color: #ffffff;  /* Biały tekst dla lepszej widoczności */
+    font-size: 20px;  /* Zwiększony rozmiar czcionki */
+    line-height: 1.7;  /* Większa wysokość linii */
+    letter-spacing: 0.8px;  /* Większe odstępy między literami */
+}
+
+.accessibility-mode h1 {
+    font-size: 36px;  /* Bardzo duży rozmiar czcionki */
+    color: #f1c40f;  /* Żółty kolor */
+}
+
+.accessibility-mode h2 {
+    font-size: 32px;  /* Duży rozmiar czcionki */
+    color: #f1c40f;  /* Żółty kolor */
+}
+
+.accessibility-mode h3 {
+    font-size: 28px;  /* Duży rozmiar czcionki */
+    color: #f1c40f;  /* Żółty kolor */
+}
+
+.accessibility-mode h4, .accessibility-mode h5, .accessibility-mode h6 {
+    font-size: 24px;  /* Duży rozmiar czcionki */
+    color: #f1c40f;  /* Żółty kolor */
+}
+
+.accessibility-mode p {
+    font-size: 20px;  /* Zwiększony rozmiar czcionki */
+    color: #ffffff;  /* Biały tekst */
+}
+
+.accessibility-mode .bg-steel {
+    background: linear-gradient(270deg, #1e1e1e, #333333);  /* Stonowany gradient */
+}
+
+.accessibility-mode .site-header .navbar-nav .nav-link {
+    color: #f1c40f;  /* Żółte linki na czarnym tle */
+    font-size: 24px;  /* Większy rozmiar czcionki */
+}
+
+.accessibility-mode .site-header .navbar-nav .nav-link:hover {
+    color: #e74c3c;  /* Jasny czerwony kolor po najechaniu */
+}
+
+.accessibility-mode .site-header .navbar-nav .nav-link.active {
+    font-weight: 700;  /* Wzmocniona czcionka */
+    color: #f1c40f;  /* Żółty kolor dla aktywnego linku */
+}
+
+.accessibility-mode .content-section {
+    background: #2c2c2c;  /* Stonowane ciemne tło dla sekcji */
+    color: #ffffff;  /* Jasny tekst */
+    padding: 40px;  /* Większe odstępy */
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);  /* Zwiększony cień */
+}
+
+.accessibility-mode .article-title {
+    color: #f1c40f;  /* Żółty kolor dla tytułów */
+    font-size: 32px;  /* Duży rozmiar czcionki */
+}
+
+.accessibility-mode a.article-title:hover {
+    color: #e74c3c;  /* Jasny czerwony kolor po najechaniu */
+}
+
+.accessibility-mode .article-metadata {
+    font-size: 20px;  /* Większy rozmiar czcionki */
+    color: #bdc3c7;  /* Jasny szary kolor dla metadanych */
+}
+
+.accessibility-mode #auth-links {
+    color: #ffffff;
+    background-color: #f1c40f;  /* Żółty kolor przycisków */
+    font-size: 24px;  /* Większy rozmiar czcionki */
+}
+
+.accessibility-mode button {
+    font-size: 24px;  /* Większy rozmiar czcionki dla przycisków */
+    padding: 15px;  /* Większe odstępy wewnętrzne */
+    background-color: #f1c40f;  /* Żółty dla przycisków */
+}
+
+.accessibility-mode button:hover {
+    background-color: #e74c3c;  /* Jasny czerwony przy najechaniu */
+}
+
+/* Wyraźny wskaźnik fokusu */
+.accessibility-mode a:focus, .accessibility-mode button:focus {
+    outline: 3px solid #f1c40f;  /* Wyraźne obramowanie fokusu w kolorze żółtym */
+}
