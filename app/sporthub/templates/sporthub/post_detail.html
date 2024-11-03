@@ -5,81 +5,87 @@
 <article class="media content-section">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted }}</small> <br>
+            <a class="author-name" href="#">{{ object.author }}</a>
+            <small class="date-posted">{{ object.date_posted }}</small> <br>
             {% if object.author == user %}
-            <div>
-                <a class="btn btn-outline-success" href="{% url 'sporthub-update' object.id %}">Zaktualizuj</a>
-                <a class="btn btn-outline-danger" href="{% url 'sporthub-delete' object.id %}">Usuń</a>
+            <div class="action-buttons">
+                <a class="btn btn-success btn-sm" href="{% url 'sporthub-update' object.id %}">Zaktualizuj</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'sporthub-delete' object.id %}">Usuń</a>
             </div>
             {% endif %}
         </div>
-        <h2><a class="article-title" href="#">{{ object.title }}</a></h2>
+
+        <h2 class="article-title"><a href="#">{{ object.title }}</a></h2>
         <p class="article-content">{{ object.content }}</p>
 
-        {% if object.distance %}
-            <div>
-                <h5>Dystans trasy:</h5>
-                <p>{{ object.distance | floatformat:"2" }} km</p>
-            </div>
-        {% endif %}
 
-        {% if object.time_taken %}
-            <div>
-                <h5>Czas pokonania trasy:</h5>
-                <p>{{ object.time_taken }}</p>
-            </div>
-        {% endif %}
-    dsdds
 
-        {% if object.avg_heart_rate %}
-            <div>
-                <h5>Średnie tętno:</h5>
-                <p>{{ object.avg_heart_rate }} bpm</p>
-            </div>
-        {% endif %}
-
-        {% if object.calories %}
-            <div>
-                <h5>Spalone kalorie:</h5>
-                <p>{{ object.calories }} kcal</p>
-            </div>
-        {% endif %}
-
-        {% if object.avg_speed %}
-            <div>
-                <h5>Średnia prędkość:</h5>
-                <p>{{ object.avg_speed | floatformat:"2" }} km/h</p>
-            </div>
-        {% endif %}
-
-        {% if object.cadence %}
-            <div>
-                <h5>Kadencja:</h5>
-                <p>{{ object.cadence }} rpm</p>
-            </div>
-        {% endif %}
-
-        {% if object.max_heart_rate %}
-            <div>
-                <h5>Maksymalne tętno:</h5>
-                <p>{{ object.max_heart_rate }} bpm</p>
-            </div>
-        {% endif %}
-
-        {% if object.avg_power %}
-            <div>
-                <h5>Średnia moc:</h5>
-                <p>{{ object.avg_power | floatformat:"2" }} W</p>
-            </div>
-        {% endif %}
-
-        {% if object.max_power %}
-            <div>
-                <h5>Maksymalna moc:</h5>
-                <p>{{ object.max_power | floatformat:"2" }} W</p>
-            </div>
-        {% endif %}
+        <!-- Sekcja danych treningowych -->
+        <div class="training-data">
+            {% if object.distance %}
+                <div class="training-item">
+                    <i class="fas fa-route"></i>
+                    <h5>Dystans trasy</h5>
+                    <p>{{ object.distance | floatformat:"2" }} km</p>
+                </div>
+            {% endif %}
+            {% if object.time_taken %}
+                <div class="training-item">
+                    <i class="far fa-clock"></i>
+                    <h5>Czas pokonania trasy</h5>
+                    <p>{{ object.time_taken }}</p>
+                </div>
+            {% endif %}
+            {% if object.avg_heart_rate %}
+                <div class="training-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h5>Średnie tętno</h5>
+                    <p>{{ object.avg_heart_rate }} bpm</p>
+                </div>
+            {% endif %}
+            {% if object.calories %}
+                <div class="training-item">
+                    <i class="fas fa-fire-alt"></i>
+                    <h5>Spalone kalorie</h5>
+                    <p>{{ object.calories }} kcal</p>
+                </div>
+            {% endif %}
+            {% if object.avg_speed %}
+                <div class="training-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h5>Średnia prędkość</h5>
+                    <p>{{ object.avg_speed | floatformat:"2" }} km/h</p>
+                </div>
+            {% endif %}
+            {% if object.cadence %}
+                <div class="training-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <h5>Kadencja</h5>
+                    <p>{{ object.cadence }} rpm</p>
+                </div>
+            {% endif %}
+            {% if object.max_heart_rate %}
+                <div class="training-item">
+                    <i class="fas fa-heart"></i>
+                    <h5>Maksymalne tętno</h5>
+                    <p>{{ object.max_heart_rate }} bpm</p>
+                </div>
+            {% endif %}
+            {% if object.avg_power %}
+                <div class="training-item">
+                    <i class="fas fa-bolt"></i>
+                    <h5>Średnia moc</h5>
+                    <p>{{ object.avg_power | floatformat:"2" }} W</p>
+                </div>
+            {% endif %}
+            {% if object.max_power %}
+                <div class="training-item">
+                    <i class="fas fa-bolt"></i>
+                    <h5>Maksymalna moc</h5>
+                    <p>{{ object.max_power | floatformat:"2" }} W</p>
+                </div>
+            {% endif %}
+        </div>
     </div>
 </article>
 
@@ -99,16 +105,151 @@
 
 <style>
 body {
-    background-color: #f4f7f6;  /* Jasny, neutralny kolor tła */
+    font-size: 1.1rem;
+    background-color: #f4f7f6;
     color: #333333;
     background-size: contain;
     background-repeat: no-repeat;
+    line-height: 1.6;
 }
 
+.training-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.training-item {
+    background-color: #eaf3f5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.training-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.training-item h5 {
+    font-size: 1.3rem;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.training-item p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.training-item i {
+    font-size: 2.2rem;
+    color: #007bff;
+    margin-bottom: 12px;
+}
+
+.content-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.content-section:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.article-metadata {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.author-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.date-posted {
+    font-size: 0.9rem;
+    color: #888888;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.action-buttons .btn {
+    font-size: 1rem; /* Zwiększony rozmiar tekstu przycisków */
+    font-weight: bold;
+    padding: 10px 20px; /* Większe wymiary przycisków */
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn-success {
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    color: #ffffff;
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.article-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 15px 0 10px;
+    text-align: center;
+}
+
+.article-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.article-title a:hover {
+    color: #0056b3;
+}
+
+.article-content {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #333333;
+}
 
 #odstep {
-    margin-top: 320px;
+    margin-top: 350px;
 }
+
+
 </style>
 
 {% endblock content %}

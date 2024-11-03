@@ -51,7 +51,7 @@ class Post(models.Model):
                 self.avg_speed = self.distance / (duration.total_seconds() / 3600)  # km/h
 
     def generate_default_data(self):
-        """Generate realistic default data for missing fields."""
+        """jeżeli brak danych"""
         if self.distance is None:
             self.distance = random.uniform(5.0, 50.0)  # km
 
